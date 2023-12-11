@@ -1,0 +1,48 @@
+import random
+ 
+# Lista de palabras para el juego
+palabras = ["apple", "banana", "cherry", "orange", "grape", "melon", "peach"]
+ 
+# Seleccionar una palabra al azar
+palabra_secreta = random.choice(palabras)
+ 
+# Función para verificar la palabra ingresada por el jugador
+def verificar_palabra(palabra_ingresada, palabra_secreta):
+    palabra_ingresada = palabra_ingresada.lower()
+    palabra_secreta = palabra_secreta.lower()
+ 
+    if palabra_ingresada == palabra_secreta:
+        return True
+    else:
+        letras_correctas = sum(1 for x, y in zip(palabra_ingresada, palabra_secreta) if x == y)
+        print(f"Letras correctas: {letras_correctas}")
+ 
+        return False
+ 
+# Función principal del juego
+def jugar_wordle():
+    intentos = 0
+    max_intentos = 5
+ 
+    print("¡Bienvenido al juego de Wordle!")
+    print("El objetivo es adivinar una palabra de 6 letras en 5 intentos.")
+ 
+    while intentos < max_intentos:
+        palabra_ingresada = input("Ingresa una palabra de 6 letras: ")
+ 
+        if len(palabra_ingresada) != 6:
+            print("La palabra debe tener 6 letras. Inténtalo de nuevo.")
+            continue
+ 
+        if verificar_palabra(palabra_ingresada, palabra_secreta):
+            print("¡Felicidades! Has adivinado la palabra.")
+            break
+ 
+        intentos += 1
+        print(f"Intento {intentos}/{max_intentos}")
+ 
+    if intentos == max_intentos:
+        print(f"Lo siento, has alcanzado el máximo de intentos. La palabra secreta era '{palabra_secreta}'.")
+ 
+# Ejecutar el juego
+jugar_wordle()
