@@ -1,0 +1,45 @@
+import random
+import math
+ 
+def jugar():
+ 
+    usuario = input ('Elije una opción: \n p: piedra \n h: papel \n t: tijeras \n Introduce tu elección --> ')
+    usuario = usuario.lower()
+ 
+    elementos = ['p', 'h', 't']
+    computador = random.choice(elementos)
+ 
+    if usuario == computador:
+        return (0, usuario, computador)
+ 
+    if is_ganador(usuario, computador):
+        return (1, usuario, computador)
+ 
+    return (-1, usuario, computador)
+ 
+def is_ganador(jugador, oponente):
+    #devolver True si el jugador le gana al oponente
+    # Condiciones para ganar: p > t, t > h, h > p
+    if (jugador == 'p' and oponente == 't') or (jugador == 't' and oponente == 'h') or (jugador == 'h' and oponente == 'p'):
+        return True
+    return False
+ 
+def elmejorjugador(n):
+    #para ganar el juego, ceil (n/2) (ie. 2/3, 3/5, 4/7)
+ 
+    jugador_contar = 0
+    computador_contar = 0
+    para_ganar = math.ceil(n/2)
+ 
+    while jugador_contar < para_ganar and computador_contar < para_ganar :
+ 
+        resultado, usuario, computador = jugar()
+ 
+        #Empate
+        if resultado == 0:
+            print("Es un empate. Tu y el computador han elegido {}".format(usuario))
+ 
+        #Tú ganas
+        elif resultado == 1:
+            jugador_contar += 1
+            print('Tú has elegido {} y el computador ha elegido {}. Ganaste
