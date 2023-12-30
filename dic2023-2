@@ -1,0 +1,20 @@
+def Ejercicio1():
+ 
+    print("Los colores a escoger son: rojo, azul, amarrillo")
+    color1=input("Digite que color vas a escoger:")
+    color2 = input("Digite otro  color que vas a escoger: ")
+ 
+ 
+    if (color1== 'rojo' and color2== 'azul') or (color1=='azul' and color2=='rojo'):
+          print("Cuando mezclas rojo y azul, obtienes púrpura")
+    elif (color1== "azul" and color2== "amarrillo") or (color1=="amarrillo" and color2=="azul"):
+          print("Cuando mezclas amarrillo y azul, obtienes verde")
+    elif (color1 == "rojo" and color2 == "amarrillo") or (color1 == "amarrillo" and color2 == "rojo"):\
+          print("Cuando mezclas rojo y amarrillo, obtienes anaranjado")
+ 
+    else: print("No ingresaste dos colores primarios.")
+ 
+ 
+ 
+ 
+ 
